@@ -23,4 +23,3 @@ class ServiceCombiner(addressHost: String, contactHost: String) {
   }
 
 }
-
