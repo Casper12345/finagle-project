@@ -5,7 +5,7 @@ import com.krowd9.api.usermanager.{GetYakatakUserIdResult, UserManagerService}
 import com.twitter.finagle.Thrift
 import com.twitter.util.Future
 
-class ServerFetcher(addressHost: String, contactHost: String) {
+class ServiceCombiner(addressHost: String, contactHost: String) {
 
   def fetchAdresses(userId: Long, filter: Option[String]): Future[Seq[OffsetAndContact]] = {
     Thrift.client.build[AddressBookDbService.MethodPerEndpoint](addressHost)

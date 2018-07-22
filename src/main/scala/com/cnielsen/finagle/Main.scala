@@ -1,6 +1,5 @@
 package com.cnielsen.finagle
 
-
 object Main extends App {
 
   new AddressBookServer(
@@ -8,6 +7,5 @@ object Main extends App {
     "localhost:7201",
     "localhost:7202"
   ).serve()
-
 
 }

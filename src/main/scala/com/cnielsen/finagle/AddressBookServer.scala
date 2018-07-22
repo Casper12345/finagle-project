@@ -15,7 +15,7 @@ class AddressBookServer(servingHost: String, extHost1: String, extHost2: String)
 
     val server: ListeningServer = Thrift.server.serveIface(
       servingHost, new AddressBookServiceImp(
-        new ServerFetcher(extHost1, extHost2))
+        new ServiceCombiner(extHost1, extHost2))
     )
 
     Await.ready(server)
@@ -25,11 +25,11 @@ class AddressBookServer(servingHost: String, extHost1: String, extHost2: String)
 }
 
 class AddressBookServiceImp(
-                             serverFetcher: ServerFetcher
+                             serviceCombiner: ServiceCombiner
                            ) extends AddressBookService.MethodPerEndpoint {
 
   def fetchRecords(id: Long, offset: Option[String]): Future[Seq[(Option[Long], Option[String])]] = {
-    serverFetcher.fetchCombined(id, offset).flatMap(a => Future.collect(a))
+    serviceCombiner.fetchCombined(id, offset).flatMap(a => Future.collect(a))
   }
 
   type FutureAlias = Future[(Seq[(Option[Long], Option[String])], Option[String])]
