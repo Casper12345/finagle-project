@@ -9,8 +9,8 @@ struct Contact {
 struct ContactsAndClientInfo {
     1: list<Contact> contacts;
     /**
-     * Option that if empty indicated that all contacts were delivered,
-     * and if contains string offset can be input to fetch the rest of the contacts.
+     * Option, that if empty, indicates that all contacts were fetched from server,
+     * else if defined string offset can be input to fetch remaining contacts.
      **/
     2: optional string contactsLeft;
 }
