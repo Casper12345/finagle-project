@@ -1,2 +1,2 @@
 # Finagle-Project
-## This is a project using Twitter Finagle with Thrift Server.
+This project uses Twitter Finagle with Thrift to combine fetching from two servers into a single server.
